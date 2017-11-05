@@ -9,14 +9,15 @@ def change(fileName):
     length = len(trainSet)
     newTrainSet = []
     startTime = time.time()
-    for i in range(length):
+    for i in range(10):
         tempDic = {}
         filePath = '/caption_train_images_20170902/' + trainSet[i]['image_id']
         captions = []
         for j in range(5):
-            cutSentence = jieba.lcut(trainSet[i]['caption'][j], cut_all = False)
-            captions += cutSentence
-        tempDic['file_path'] = filePath
+        	cutSentence = jieba.lcut(trainSet[i]['caption'][j], cut_all = False)
+        	captions.append(cutSentence)
+        #captions.append(tempList)
+        tempDic['file_path'] = filePath 
         tempDic['captions'] = captions
         newTrainSet.append(tempDic)
         print('%dth captions has done' % i)
